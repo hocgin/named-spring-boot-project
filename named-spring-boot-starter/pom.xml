@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>named-spring-boot-parent</artifactId>
+    <groupId>in.hocg.named</groupId>
+    <version>${revision}</version>
+    <relativePath>../named-spring-boot-parent/pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>Named :: Spring Boot :: Starter</name>
+  <artifactId>named-spring-boot-starter</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>named-spring-boot-autoconfigure</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>

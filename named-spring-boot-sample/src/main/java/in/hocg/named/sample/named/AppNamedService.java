@@ -19,8 +19,8 @@ import java.util.Map;
 public class AppNamedService implements NamedService {
 
     @NamedHandler(NamedConstants.Test)
-    public Map<Object, Object> loadTestData(NamedArgs args) {
-        Map<Object, Object> result = Maps.newHashMap();
+    public Map<String, Object> loadTestData(NamedArgs args) {
+        Map<String, Object> result = Maps.newHashMap();
         List<String> values = args.getValues();
         for (String value : values) {
             result.put(value, "Value#" + value);

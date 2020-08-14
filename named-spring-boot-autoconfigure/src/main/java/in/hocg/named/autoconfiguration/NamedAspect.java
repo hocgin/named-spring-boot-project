@@ -166,10 +166,10 @@ public class NamedAspect {
         if (ids.length == 0) {
             return;
         }
-        Map<Object, Object> values = callNamedHandleMethod(namedType, ids, args);
+        Map<String, Object> values = callNamedHandleMethod(namedType, ids, args);
         log.info("===> {}-{}-{}::{}", namedType, ids, args, values);
         newNamedRows.parallelStream().forEach(row -> {
-            Object value = values.get(row.getIdValue());
+            Object value = values.get(LangUtils.toString(row.getIdValue()));
             if (Objects.nonNull(value)) {
                 setValue(row, value);
             }
@@ -192,7 +192,7 @@ public class NamedAspect {
         return String.format("%s-%s-%s", namedType, id, Arrays.toString(args));
     }
 
-    private Map<Object, Object> callNamedHandleMethod(String namedType, Object[] ids, String[] args) {
+    private Map<String, Object> callNamedHandleMethod(String namedType, Object[] ids, String[] args) {
         final NamedService namedService = context.getBean(NamedService.class);
 
         for (Method method : namedService.getClass().getMethods()) {
@@ -208,7 +208,7 @@ public class NamedAspect {
                     if (Objects.isNull(invokeResult)) {
                         return Collections.emptyMap();
                     } else if (invokeResult instanceof Map) {
-                        return (Map<Object, Object>) invokeResult;
+                        return (Map<String, Object>) invokeResult;
                     } else {
                         return Collections.emptyMap();
                     }
